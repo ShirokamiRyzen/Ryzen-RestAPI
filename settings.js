@@ -1,22 +1,6 @@
 require('dotenv').config()
 
 
-//_______________________ ┏  Info  ┓ _______________________\\
-//
-//   Credit : AlipBot
-//   
-//   Note 
-//   Jangan Jual SC ini ,
-//   Jangan Buang Text ini,
-//   Siapa Mahu Upload Jangan Lupa Credit :),
-//   Siapa Tidak Letak Credit Akan Ambil Tindakan
-//   
-//_______________________ ┏ Make By AlipBot ┓ _______________________\\
-
-
-
-
-
 //_______________________ ┏  Main Setting  ┓ _______________________\\
 
 creator = 'ShirokamiRyzen' // Nama 
@@ -64,37 +48,37 @@ loghandler = {
     noturl: {
     	status: false,
     	code: 403,
-    	message: '[!] Forbiden or Error, Invlid url',
+    	message: '[!] Error, Invalid url',
     	maintanied_by: `${creator}`
     },
     notfound: {
     	status: false,
     	code: 404,
-    	message: '[!] Forbiden or Error, Not Found',
+    	message: '[!] Error, Not Found',
     	maintanied_by: `${creator}`
     },
     notid: {
     	status: false,
     	code: 404,
-    	message: '[!] Forbiden or Error, Invalid Id or Zone',
+    	message: '[!] Error, Invalid Id or Zone',
     	maintanied_by: `${creator}`
     },
     redy: {
     	status: false,
     	code: 403,
-    	message: '[!] Forbiden or Error, Alias ​​already in use',
+    	message: '[!] Error, Alias ​​already in use',
     	maintanied_by: `${creator}`
     },
     emoji: {
 	    status: false,
 	    code: 403,
-	    message: '[!] Forbiden or Error, Emoji not Found',
+	    message: '[!] Error, Emoji not Found',
 	    maintanied_by: `${creator}`
 	},
     instgram: {
 	    status: false,
 	    code: 403,
-	    message: '[!] Forbiden or Error, Username tidak wujud atau account private',
+	    message: '[!] Error, Invalid link or private account',
 	    maintanied_by: `${creator}`
    },
     register: {

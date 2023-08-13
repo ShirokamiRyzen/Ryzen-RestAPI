@@ -1,7 +1,7 @@
 {
   "name": "Ryzen-API",
   "version": "2.0.0",
-  "description": "make by alip free rest api",
+  "description": "Restfull API for Whatsapp Bot JS",
   "main": "index.js",
   "engines": {
     "node": "18.x"
@@ -15,19 +15,19 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/AlipBot/Api-Alpis.git"
+    "url": "git+https://github.com/ShirokamiRyzen/Ryzen-RestAPI.git"
   },
   "keywords": [
     "restapi",
     "bot",
     "whatsaap"
   ],
-  "author": "AlipBot",
+  "author": "ShirokamiRyzen",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/AlipBot/Api-Alpis/issues"
+    "url": "https://github.com/ShirokamiRyzen/Ryzen-RestAPI/issues"
   },
-  "homepage": "https://github.com/AlipBot/Api-Alpis#readme",
+  "homepage": "https://github.com/ShirokamiRyzen/Ryzen-RestAPI#readme",
   "dependencies": {
     "axios": "^0.27.2",
     "bcryptjs": "^2.4.3",
