@@ -245,22 +245,6 @@ router.get('/api/dowloader/sfilemobi', cekKey, async (req, res, next) => {
     })
 })
 
-router.get('/api/dowloader/zippyshare', cekKey, async (req, res, next) => {
-	var url = req.query.url
-	if (!url ) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan parameter url"})   
-
-	alip.zippyshare(url).then(async (data) => {
-		if (!data ) return res.json(loghandler.noturl)
-		limitapikey(req.query.apikey)
-		res.json({
-			status: true,
-	        creator: `${creator}`,
-			result: data
-	    })
-	}).catch(e => {
-		res.json(loghandler.noturl)
-    })
-})
 
 router.get('/api/dowloader/telesticker', cekKey, async (req, res, next) => {
 	var url = req.query.url
