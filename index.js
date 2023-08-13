@@ -1,17 +1,3 @@
-//_______________________ ┏  Info  ┓ _______________________\\
-//
-//   Credit : AlipBot
-//
-//   Note
-//   Jangan Jual SC ini ,
-//   Jangan Buang Text ini,
-//   Siapa Mahu Upload Jangan Lupa Credit :),
-//   Siapa Tidak Letak Credit Akan Ambil Tindakan
-//
-//_______________________ ┏ Make By AlipBot ┓ _______________________\\
-
-//―――――――――――――――――――――――――――――――――――――――――― ┏  Modules ┓ ―――――――――――――――――――――――――――――――――――――――――― \\
-
 require("./settings");
 const express = require("express");
 const app = express();
@@ -69,7 +55,7 @@ mongoose
     if (limit === null) {
       let obj = { RequestToday: 0 };
       await dataweb.create(obj);
-      console.log("DATA WEBSITE Sussces Create");
+      console.log("Website data create success");
     }
   });
 
@@ -137,4 +123,3 @@ app.use(function (err, req, res, next) {
 
 module.exports = app;
 
-//_______________________ ┏ Make By AlipBot ┓ _______________________\\
