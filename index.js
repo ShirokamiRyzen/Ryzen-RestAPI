@@ -18,9 +18,24 @@ const dataweb = require("./model/DataWeb");
 
 //_______________________ ┏ Funtion ┓ _______________________\\
 
+/*
 async function resetapi() {
   await User.updateMany({}, { $set: { limitApikey: LimitApikey } });
   console.log("RESET LIMIT DONE");
+}
+*/
+
+async function resetapi() {
+  const limitThreshold = 200;
+
+  // Mendapatkan daftar pengguna dengan LimitApikey di bawah 200
+  const usersToUpdate = await User.find({ limitApikey: { $lt: limitThreshold } });
+
+  // Melakukan pembaruan pada pengguna yang memenuhi syarat
+  for (const user of usersToUpdate) {
+    await User.updateOne({ _id: user._id }, { $set: { limitApikey: LimitApikey } });
+    console.log(`RESET LIMIT DONE for user with ID ${user._id}`);
+  }
 }
 
 async function ResetRequestToday() {
@@ -63,7 +78,7 @@ mongoose
 
 // Reset Request Today Setiap sehari
 cron.schedule(
-  "0 0 0 * * *",
+  "0 0 * * *",
   () => {
     ResetRequestToday();
   },
@@ -73,7 +88,20 @@ cron.schedule(
   }
 );
 
+//Reset All User Apikey Limit setiap sehari
+cron.schedule(
+  "0 0 * * *",
+  () => {
+    resetapi();
+  },
+  {
+    scheduled: true,
+    timezone: "Asia/Jakarta",
+  }
+);
+
 //Reset All User Apikey Limit setiap sebulan
+/*
 cron.schedule(
   "0 0 1 * *",
   () => {
@@ -84,6 +112,7 @@ cron.schedule(
     timezone: "Asia/Jakarta",
   }
 );
+*/
 
 //_______________________ ┏ Code ┓ _______________________\\
 
