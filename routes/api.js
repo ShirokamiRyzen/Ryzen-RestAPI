@@ -139,8 +139,7 @@ router.get('/api/dowloader/igdowloader', cekKey, async (req, res, next) => {
     })
 })
 
-
-router.get('/api/dowloader/yt', cekKey, async (req, res, next) => {
+router.get('/api/dowloader/ytmp3', cekKey, async (req, res, next) => {
 	var url = req.query.url
 	if (!url ) return res.json({ status : false, creator : `${creator}`, message : "[!] insert url parameter"}) 
 
@@ -152,21 +151,39 @@ router.get('/api/dowloader/yt', cekKey, async (req, res, next) => {
 			status: true,
 			creator: `${creator}`,
 			result:{ 
+			link: mp3.result,
+			size: mp3.size,
 			title: mp4.title,
 			desc: mp4.desc,
 			thum: mp4.thumb,
 			view: mp4.views,
 			channel: mp4.channel,
-			uploadDate: mp4.uploadDate,
-			mp4:{
-				result: mp4.result,
-				size: mp4.size,
-				quality: mp4.quality
-			},
-			mp3:{
-				result: mp3.result,
-				size: mp3.size
-			}
+			uploadDate: mp4.uploadDate
+		 }
+	   })
+})
+
+router.get('/api/dowloader/ytmp4', cekKey, async (req, res, next) => {
+	var url = req.query.url
+	if (!url ) return res.json({ status : false, creator : `${creator}`, message : "[!] insert url parameter"}) 
+
+	var mp3 = await ytMp3(url)
+	var mp4 = await ytMp4(url)
+	if (!mp4 || !mp3) return res.json(loghandler.noturl)
+	limitapikey(req.query.apikey)
+		res.json({
+			status: true,
+			creator: `${creator}`,
+			result:{ 
+			link: mp4.result,
+			size: mp4.size,
+			quality: mp4.quality,
+			title: mp4.title,
+			desc: mp4.desc,
+			thum: mp4.thumb,
+			view: mp4.views,
+			channel: mp4.channel,
+			uploadDate: mp4.uploadDate
 		 }
 	   })
 })
