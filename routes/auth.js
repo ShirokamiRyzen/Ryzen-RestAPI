@@ -129,16 +129,16 @@ router.post('/signup', recaptcha.middleware.verify, captchaRegister, async(req, 
         req.flash('error_messages',"Password Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters,no emoji and no Space Limit 30 text");
         res.redirect('/signup');  
     } else if(username.length < 4) {
-        req.flash('error_messages',"Username harus minimal 4 karakter");
+        req.flash('error_messages',"Username must be at least 4 characters long");
         res.redirect('/signup');
     } else if(username.length > 20) {
-        req.flash('error_messages',"Limit Username tidak boleh lebih 20 karakter");
+        req.flash('error_messages',"Username limit cannot be more than 20 characters");
         res.redirect('/signup');
     } else if (containsEmoji(username)) {
-        req.flash('error_messages',"Username Tidak boleh guna emoji");
+        req.flash('error_messages',"Username Cannot contain special character");
         res.redirect('/signup');  
     }else if(!checkemail){
-        req.flash('error_messages',"Sorry kami terima Account Gmail Sahaja");
+        req.flash('error_messages',"Sorry, we only accepting Gmail");
         res.redirect('/signup');  
     }else{
 
@@ -161,7 +161,7 @@ router.post('/signup', recaptcha.middleware.verify, captchaRegister, async(req, 
 
                         }).save((err, data) => {
                             if (err) throw err;
-                            req.flash('success_messages',"Account Succes Create Sila Login");
+                            req.flash('success_messages',"Success create account, please login");
                             res.redirect('/login');
                         });
                     })
