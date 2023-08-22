@@ -397,11 +397,11 @@
                             <div class="card-body">
                                 <div class="row align-items-center">
                                     <div class="col mr-2">
-                                        <div class="text-xs font-weight-bold text-uppercase mb-1">Visitor</div>
-                                        <div class="h5 mb-0 font-weight-bold" id="visitor">0</div>
+                                        <div class="text-xs font-weight-bold text-uppercase mb-1">User Registered</div>
+                                        <div class="h5 mb-0 font-weight-bold"><%= totalUsers %></div>
                                     </div>
                                     <div class="col-auto">
-                                        <i class="fa-solid fa-eye fa-2xl"></i>
+                                        <i class="fa-solid fa-user fa-2xl"></i>
                                     </div>
                                 </div>
                             </div>
@@ -415,6 +415,22 @@
                                     <div class="col mr-2">
                                         <div class="text-xs font-weight-bold text-uppercase mb-1">Request Today</div>
                                         <div class="h5 mb-0 font-weight-bold" ><%= RequestToday %></div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <i class="fa-solid fa-chart-line fa-2xl" ></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="card h-50">
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                        <div class="text-xs font-weight-bold text-uppercase mb-1">Request Total</div>
+                                        <div class="h5 mb-0 font-weight-bold" ><%= RequestTotal %></div>
                                     </div>
                                     <div class="col-auto">
                                         <i class="fa-solid fa-chart-line fa-2xl" ></i>
@@ -480,8 +496,7 @@
                                 <div class="row no-gutters align-items-center">
                                     <div class="col mr-2">
                                         <div class="text-xs font-weight-bold text-uppercase mb-1">Jam</div>
-                                        <div class="h5 mb-0 font-weight-bold" id="row-no-guttersalign-items-center">00:00:00</div>
-
+                                        <div class="h5 mb-0 font-weight-bold" id="jam">00:00:00</div>
                                     </div>
                                     <div class="col-auto">
                                         <i class="fa fa-clock-o fa-2xl"></i>
@@ -558,6 +573,19 @@
     <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
     <script src="js/ruang-admin.min.js"></script>
     <script src="js/menu.js"></script>
+    <script>
+        let jamElement = document.querySelector('#jam');
+
+setInterval(() => {
+    const currentTime = new Date();
+    const hours = currentTime.getHours().toString().padStart(2, '0');
+    const minutes = currentTime.getMinutes().toString().padStart(2, '0');
+    const seconds = currentTime.getSeconds().toString().padStart(2, '0');
+
+    const formattedTime = hours + ":" + minutes + ":" + seconds;
+    jamElement.innerHTML = formattedTime;
+}, 1000); // Update every 1 second (1000 milliseconds)
+    </script>
     
 
 </body>

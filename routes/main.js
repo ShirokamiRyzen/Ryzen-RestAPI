@@ -1,19 +1,5 @@
 __path = process.cwd()
 
-//_______________________ ┏  Info  ┓ _______________________\\
-//
-//   Credit : AlipBot
-//   
-//   Note 
-//   Jangan Jual SC ini ,
-//   Jangan Buang Text ini,
-//   Siapa Mahu Upload Jangan Lupa Credit :),
-//   Siapa Tidak Letak Credit Akan Ambil Tindakan
-//   
-//_______________________ ┏ Make By AlipBot ┓ _______________________\\
-
-//―――――――――――――――――――――――――――――――――――――――――― ┏  Modules ┓ ―――――――――――――――――――――――――――――――――――――――――― \\
-
 require('../settings');
 const express = require('express');
 const router = express.Router();
@@ -23,6 +9,7 @@ const authRoutes = require('./auth');
 const apiRoutes = require('./api')
 const dataweb = require('../model/DataWeb');
 const User = require('../model/user');
+
 
 //_______________________ ┏ Function ┓ _______________________\\
 
@@ -39,8 +26,20 @@ function checkAuth(req, res, next) {
 async function getApikey(id) {
     let limit = await dataweb.findOne();
     let users = await User.findOne({_id: id})
-    return {apikey: users.apikey, username: users.username, checklimit: users.limitApikey, isVerified : users.isVerified, RequestToday: limit.RequestToday};
+    return {apikey: users.apikey, username: users.username, checklimit: users.limitApikey, isVerified : users.isVerified, RequestToday: limit.RequestToday, RequestTotal: limit.RequestTotal};
 }
+
+async function getTotalUsersCount() {
+  try {
+    const totalUsersCount = await User.countDocuments();
+    return totalUsersCount;
+  } catch (error) {
+    console.error('Error:', error);
+    return 0;
+  }
+}
+
+
 
 
 //_______________________ ┏ Router ┓ _______________________\\
@@ -50,9 +49,10 @@ router.get('/', (req, res) => {
 });
 
 router.get('/docs',  checkAuth, async (req, res) => {
+  const totalUsers = await getTotalUsersCount();
   let getinfo =  await getApikey(req.user.id)
-  let { apikey, username, checklimit, isVerified , RequestToday } = getinfo
-    res.render("docs", { username: username, verified: isVerified, apikey: apikey, limit: checklimit , RequestToday: RequestToday });
+  let { apikey, username, checklimit, isVerified , RequestToday, RequestTotal } = getinfo
+    res.render("docs", { username: username, verified: isVerified, apikey: apikey, limit: checklimit , RequestToday: RequestToday , RequestTotal: RequestTotal, totalUsers: totalUsers });
     
 });
 

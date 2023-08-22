@@ -43,7 +43,7 @@ async function cekKey(req, res, next) {
 }
 
 async function limitapikey(apikey) {
-       await dataweb.updateOne({}, {$inc: {  RequestToday: 1 }})
+       await dataweb.updateOne({}, {$inc: {  RequestToday: 1, RequestTotal: 1 }})
        await User.findOneAndUpdate({apikey: apikey},{$inc: { limitApikey: -1}},{upsert: true,new: true})
 }
 
