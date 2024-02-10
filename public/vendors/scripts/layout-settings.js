@@ -1,6 +1,6 @@
-(function() {
+(function () {
 	'use strict';
-	$(document).ready(function() {
+	$(document).ready(function () {
 
 		// Store object for local storage data
 		var currentOptions = {
@@ -13,14 +13,14 @@
 		/**
 		 * Get local storage value
 		 */
-		 function getOptions() {
+		function getOptions() {
 			return JSON.parse(localStorage.getItem("optionsObject"))
-		 }
+		}
 
 		/**
 		 * Set local storage property value
 		 */
-		 function setOptions(propertyName, propertyValue) {
+		function setOptions(propertyName, propertyValue) {
 
 			//Store in local storage
 			var optionsCopy = Object.assign({}, currentOptions);
@@ -39,9 +39,9 @@
 		/**
 		 * Clear local storage
 		 */
-		 function clearOptions() {
+		function clearOptions() {
 			localStorage.removeItem("optionsObject");
-		 }
+		}
 
 		// Set localstorage value to variable
 		if (getOptions() != null) {
@@ -51,12 +51,12 @@
 		}
 
 		//Layout settings visible
-		$('[data-toggle="right-sidebar"]').on('click', function() {
+		$('[data-toggle="right-sidebar"]').on('click', function () {
 			jQuery('.right-sidebar').addClass('right-sidebar-visible');
 		});
 
 		//THEME OPTION CLOSE BUTTON
-		$('[data-toggle="right-sidebar-close"]').on('click', function() {
+		$('[data-toggle="right-sidebar-close"]').on('click', function () {
 			jQuery('.right-sidebar').removeClass('right-sidebar-visible');
 		})
 
@@ -69,7 +69,7 @@
 		var header_dark = jQuery('.header-dark');
 		var header_light = jQuery('.header-white');
 
-		header_dark.click(function() {
+		header_dark.click(function () {
 			'use strict';
 			jQuery(this).addClass('active');
 			header_light.removeClass('active');
@@ -84,7 +84,7 @@
 			header_dark.trigger("click");
 		}
 
-		header_light.click(function() {
+		header_light.click(function () {
 			'use strict';
 			jQuery(this).addClass('active');
 			header_dark.removeClass('active');
@@ -103,7 +103,7 @@
 		var sidebar_dark = jQuery('.sidebar-dark');
 		var sidebar_light = jQuery('.sidebar-light');
 
-		sidebar_dark.click(function() {
+		sidebar_dark.click(function () {
 			'use strict';
 			jQuery(this).addClass('active');
 			sidebar_light.removeClass('active');
@@ -113,12 +113,7 @@
 			setOptions("navigationBackground", "sidebar-dark")
 		});
 
-		//Click for current options
-		if (currentOptions.navigationBackground === "sidebar-dark") {
-			sidebar_dark.trigger("click")
-		}
-
-		sidebar_light.click(function() {
+		sidebar_light.click(function () {
 			'use strict';
 			jQuery(this).addClass('active');
 			sidebar_dark.removeClass('active');
@@ -128,21 +123,23 @@
 			setOptions("navigationBackground", "sidebar-light")
 		});
 
-		//Click for current options
-		if (currentOptions.navigationBackground === "sidebar-light") {
-			sidebar_light.trigger("click")
+		// Check current options or set default
+		if (!currentOptions.navigationBackground || currentOptions.navigationBackground === "sidebar-light") {
+			sidebar_light.trigger("click");
+		} else if (currentOptions.navigationBackground === "sidebar-dark") {
+			sidebar_dark.trigger("click");
 		}
 
 		// Menu Dropdown Icon
-		$('input:radio[name=menu-dropdown-icon]').change(function(){
+		$('input:radio[name=menu-dropdown-icon]').change(function () {
 			// var className = $('input:radio[name=menu-dropdown-icon]:checked').val().toLowerCase().replace(/\s+/, "-");
 			// $(".sidebar-menu").attr('class', 'sidebar-menu ' + className);
 			// setOptions("menuDropdownIcon", className);
 			var newClass1 = ['sidebar-menu'];
-			newClass1.push( $('input:radio[name=menu-dropdown-icon]:checked').val().toLowerCase().replace(/\s+/, "-") );
-			newClass1.push( $('input:radio[name=menu-list-icon]:checked').val().toLowerCase().replace(/\s+/, "-") );
-			$(".sidebar-menu").attr('class', newClass1.join( ' ' ) );
-			setOptions("menuDropdownIcon", newClass1.slice(-2)[0] );
+			newClass1.push($('input:radio[name=menu-dropdown-icon]:checked').val().toLowerCase().replace(/\s+/, "-"));
+			newClass1.push($('input:radio[name=menu-list-icon]:checked').val().toLowerCase().replace(/\s+/, "-"));
+			$(".sidebar-menu").attr('class', newClass1.join(' '));
+			setOptions("menuDropdownIcon", newClass1.slice(-2)[0]);
 		});
 		if (currentOptions.menuDropdownIcon === "icon-style-1") {
 			$('input:radio[value=icon-style-1]').trigger("click")
@@ -155,12 +152,12 @@
 		}
 
 		// Menu List Icon
-		$('input:radio[name=menu-list-icon]').change(function() {
+		$('input:radio[name=menu-list-icon]').change(function () {
 			var newClass = ['sidebar-menu'];
-			newClass.push( $('input:radio[name=menu-dropdown-icon]:checked').val().toLowerCase().replace(/\s+/, "-") );
-			newClass.push( $('input:radio[name=menu-list-icon]:checked').val().toLowerCase().replace(/\s+/, "-") );
-			$(".sidebar-menu").attr('class', newClass.join( ' ' ) );
-			setOptions("menuListIcon", newClass.slice(-1)[0] );
+			newClass.push($('input:radio[name=menu-dropdown-icon]:checked').val().toLowerCase().replace(/\s+/, "-"));
+			newClass.push($('input:radio[name=menu-list-icon]:checked').val().toLowerCase().replace(/\s+/, "-"));
+			$(".sidebar-menu").attr('class', newClass.join(' '));
+			setOptions("menuListIcon", newClass.slice(-1)[0]);
 		});
 		if (currentOptions.menuListIcon === "icon-list-style-1") {
 			$('input:radio[value=icon-list-style-1]').trigger("click")
@@ -182,12 +179,12 @@
 		}
 
 
-		$('#reset-settings').click(function() {
+		$('#reset-settings').click(function () {
 			clearOptions();
 			location.reload();
 		});
 
-		
+
 
 	});
 
