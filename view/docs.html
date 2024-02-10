@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- Basic Page Info -->
+	<meta charset="utf-8">
+	<title>Ryzen API | Dashboard</title>
+
+	<!-- Site favicon -->
+	<link rel="icon" href="images/favicon.ico" type="image/x-icon">
+
+	<!-- Mobile Specific Metas -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<!-- Google Font -->
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+	<!-- CSS -->
+	<link rel="stylesheet" type="text/css" href="vendors/styles/core.css">
+	<link rel="stylesheet" type="text/css" href="vendors/styles/icon-font.min.css">
+<link rel="stylesheet" type="text/css" href="src/plugins/datatables/css/dataTables.bootstrap4.min.css">
+	<link rel="stylesheet" type="text/css" href="src/plugins/datatables/css/responsive.bootstrap4.min.css">
+	<link rel="stylesheet" type="text/css" href="vendors/styles/style.css">
+
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-119386393-1"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+
+		gtag('config', 'UA-119386393-1');
+	</script>
+</head>
+<body>
+	<div class="pre-loader">
+		<div class="pre-loader-box">
+			<div class="loader-logo"><img src="assets/images/logo.png" alt=""></div>
+			<div class='loader-progress' id="progress_div">
+				<div class='bar' id='bar1'></div>
+			</div>
+			<div class='percent' id='percent1'>0%</div>
+			<div class="loading-text">
+				Loading...
+			</div>
+		</div>
+	</div>
+
+	<div class="header">
+		<div class="header-left">
+			<div class="menu-icon dw dw-menu"></div>
+		</div>
+		<div class="header-right">
+			<div class="dashboard-setting user-notification">
+				<div class="dropdown">
+					<a class="dropdown-toggle no-arrow" href="javascript:;" data-toggle="right-sidebar">
+						<i class="dw dw-settings2"></i>
+					</a>
+				</div>
+			</div>
+			<!--<div class="user-notification">
+				<div class="dropdown">
+					<a class="dropdown-toggle no-arrow" href="#" role="button" data-toggle="dropdown">
+						<i class="icon-copy dw dw-notification"></i>
+						<span class="badge notification-active"></span>
+					</a>
+					<div class="dropdown-menu dropdown-menu-right">
+						<div class="notification-list mx-h-350 customscroll">
+							<ul>
+								<li>
+									<a href="#">
+										<img src="vendors/images/img.jpg" alt="">
+										<h3>John Doe</h3>
+										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed...</p>
+									</a>
+								</li>
+								<li>
+									<a href="#">
+										<img src="vendors/images/photo1.jpg" alt="">
+										<h3>Lea R. Frith</h3>
+										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed...</p>
+									</a>
+								</li>
+								<li>
+									<a href="#">
+										<img src="vendors/images/photo2.jpg" alt="">
+										<h3>Erik L. Richards</h3>
+										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed...</p>
+									</a>
+								</li>
+								<li>
+									<a href="#">
+										<img src="vendors/images/photo3.jpg" alt="">
+										<h3>John Doe</h3>
+										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed...</p>
+									</a>
+								</li>
+								<li>
+									<a href="#">
+										<img src="vendors/images/photo4.jpg" alt="">
+										<h3>Renee I. Hansen</h3>
+										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed...</p>
+									</a>
+								</li>
+								<li>
+									<a href="#">
+										<img src="vendors/images/img.jpg" alt="">
+										<h3>Vicki M. Coleman</h3>
+										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed...</p>
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			--></div>
+		</div>
+
+	<div class="right-sidebar">
+		<div class="sidebar-title">
+			<h3 class="weight-600 font-16 text-blue">
+				Layout Settings
+				<span class="btn-block font-weight-400 font-12">User Interface Settings</span>
+			</h3>
+			<div class="close-sidebar" data-toggle="right-sidebar-close">
+				<i class="icon-copy ion-close-round"></i>
+			</div>
+		</div>
+		<div class="right-sidebar-body customscroll">
+			<div class="right-sidebar-body-content">
+				<h4 class="weight-600 font-18 pb-10">Header Background</h4>
+				<div class="sidebar-btn-group pb-30 mb-10">
+					<a href="javascript:void(0);" class="btn btn-outline-primary header-white active">White</a>
+					<a href="javascript:void(0);" class="btn btn-outline-primary header-dark">Dark</a>
+				</div>
+
+				<h4 class="weight-600 font-18 pb-10">Sidebar Background</h4>
+				<div class="sidebar-btn-group pb-30 mb-10">
+					<a href="javascript:void(0);" class="btn btn-outline-primary sidebar-light active">White</a>
+					<a href="javascript:void(0);" class="btn btn-outline-primary sidebar-dark">Dark</a>
+				</div>
+
+				<h4 class="weight-600 font-18 pb-10">Menu Dropdown Icon</h4>
+				<div class="sidebar-radio-group pb-10 mb-10">
+					<div class="custom-control custom-radio custom-control-inline">
+						<input type="radio" id="sidebaricon-1" name="menu-dropdown-icon" class="custom-control-input" value="icon-style-1" checked="">
+						<label class="custom-control-label" for="sidebaricon-1"><i class="fa fa-angle-down"></i></label>
+					</div>
+					<div class="custom-control custom-radio custom-control-inline">
+						<input type="radio" id="sidebaricon-2" name="menu-dropdown-icon" class="custom-control-input" value="icon-style-2">
+						<label class="custom-control-label" for="sidebaricon-2"><i class="ion-plus-round"></i></label>
+					</div>
+					<div class="custom-control custom-radio custom-control-inline">
+						<input type="radio" id="sidebaricon-3" name="menu-dropdown-icon" class="custom-control-input" value="icon-style-3">
+						<label class="custom-control-label" for="sidebaricon-3"><i class="fa fa-angle-double-right"></i></label>
+					</div>
+				</div>
+
+				<h4 class="weight-600 font-18 pb-10">Menu List Icon</h4>
+				<div class="sidebar-radio-group pb-30 mb-10">
+					<div class="custom-control custom-radio custom-control-inline">
+						<input type="radio" id="sidebariconlist-1" name="menu-list-icon" class="custom-control-input" value="icon-list-style-1" checked="">
+						<label class="custom-control-label" for="sidebariconlist-1"><i class="ion-minus-round"></i></label>
+					</div>
+					<div class="custom-control custom-radio custom-control-inline">
+						<input type="radio" id="sidebariconlist-2" name="menu-list-icon" class="custom-control-input" value="icon-list-style-2">
+						<label class="custom-control-label" for="sidebariconlist-2"><i class="fa fa-circle-o" aria-hidden="true"></i></label>
+					</div>
+					<div class="custom-control custom-radio custom-control-inline">
+						<input type="radio" id="sidebariconlist-3" name="menu-list-icon" class="custom-control-input" value="icon-list-style-3">
+						<label class="custom-control-label" for="sidebariconlist-3"><i class="dw dw-check"></i></label>
+					</div>
+					<div class="custom-control custom-radio custom-control-inline">
+						<input type="radio" id="sidebariconlist-4" name="menu-list-icon" class="custom-control-input" value="icon-list-style-4" checked="">
+						<label class="custom-control-label" for="sidebariconlist-4"><i class="icon-copy dw dw-next-2"></i></label>
+					</div>
+					<div class="custom-control custom-radio custom-control-inline">
+						<input type="radio" id="sidebariconlist-5" name="menu-list-icon" class="custom-control-input" value="icon-list-style-5">
+						<label class="custom-control-label" for="sidebariconlist-5"><i class="dw dw-fast-forward-1"></i></label>
+					</div>
+					<div class="custom-control custom-radio custom-control-inline">
+						<input type="radio" id="sidebariconlist-6" name="menu-list-icon" class="custom-control-input" value="icon-list-style-6">
+						<label class="custom-control-label" for="sidebariconlist-6"><i class="dw dw-next"></i></label>
+					</div>
+				</div>
+
+				<div class="reset-options pt-30 text-center">
+					<button class="btn btn-danger" id="reset-settings">Reset Settings</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="left-side-bar">
+		<div class="brand-logo">
+			<a href="#">
+				<img src="assets/images/logo.png" alt="" class="dark-logo">
+				<img src="assets/images/logo.png" alt="" class="light-logo">
+			</a>
+			<div class="close-sidebar" data-toggle="left-sidebar-close">
+				<i class="ion-close-round"></i>
+			</div>
+		</div>
+		<div class="menu-block customscroll">
+			<div class="sidebar-menu">
+				<ul id="accordion-menu">
+					<li class="dropdown">
+						<a href="javascript:;" class="dropdown-toggle">
+							<span class="micon dw dw-house-1"></span><span class="mtext">Home</span>
+						</a>
+						<ul class="submenu">
+							<li><a href="/">Home</a></li>
+						</ul>
+					</li>
+					<li class="dropdown">
+						<a href="javascript:;" class="dropdown-toggle">
+							<span class="micon dw dw-chip-1"></span><span class="mtext">AI Feature</span>
+						</a>
+						<ul class="submenu">
+							<li><a href="/api/ai/ryzenai?text=introduce your self">Zexxa AI</a></li>
+							<li><a href="/api/ai/bard?text=hello bard">Google Bard AI</a></li>
+							<li><a href="/api/ai/openai?text=hello ai">ChatGPT AI</a></li>
+						</ul>
+					</li>
+					<li class="dropdown">
+						<a href="javascript:;" class="dropdown-toggle">
+							<span class="micon dw dw-download"></span><span class="mtext">Downloader Feature</span>
+						</a>
+						<ul class="submenu">
+							<li><a href="/api/dowloader/fbdown?url=https://www.facebook.com/GamingbyRTX/videos/288365840673219/">Facebook</a>
+							</li>
+							<li><a href="/api/dowloader/twitter?url=">Twitter</a>
+							</li>
+							<li><a href="/api/dowloader/tikok?url=https://vt.tiktok.com/ZSND4xYqR/">Tiktok Video/Audio</a>
+							</li>
+							<li><a href="/api/dowloader/tikok?url=https://vt.tiktok.com/ZSND4xYqR/">Tiktok Slide</a>
+							</li>
+							<li><a href="/api/dowloader/igdowloader?url=https://www.instagram.com/reel/Cy0WlFNPZ7O/?igshid=MzRlODBiNWFlZA==">Instagram</a>
+							</li>
+							<li><a href="/api/dowloader/yt?url=https://www.youtube.com/watch?v=JdSpuTi9d8A">Youtube Video/Audio</a>
+							</li>
+							<li><a href="/api/dowloader/soundcloud?url=https://m.soundcloud.com/eminemofficial/lose-yourself">Soundcloud</a>
+							</li>
+							<!--<li><a href="/api/downloader/xnxxdl?url=">XNXX</a>
+							</li>
+							<li><a href="/api/downloader/xvideosdl?url=">XVIDEOS</a>
+							</li>-->
+							<li><a href="/api/downloader/gdrivedl?url=">Google Drive</a>
+							</li>
+							<li><a href="/api/downloader/mediafire?url=https://www.mediafire.com/file/ksitryasyswn2ms/Script%20Skin%20Ling%20Dragon%20Tamer%20%20To_M_World.zip/file">Mediafire</a>
+							</li>
+							<li><a href="/api/downloader/sfilemobi?url=https://sfile.mobi/2wfPguhYnOy">Sfile Mobi</a>
+							</li>
+							<li><a href="/api/downloader/telesticker?url=">Telegram Sticker</a>
+							</li>
+						</ul>
+					</li>
+					<li class="dropdown">
+						<a href="javascript:;" class="dropdown-toggle">
+							<span class="micon dw dw-edit"></span><span class="mtext"> Textpro Maker </span>
+						</a>
+						<ul class="submenu">
+							<li><a href="/api/textpro/pencil?text=ZexxaDev">Pencil</a>
+							</li>
+							<li><a href="/api/textpro/glitch?text=ZexxaDev">Glitch</a>
+							</li>
+							<li><a href="/api/textpro/blackpink?text=ZexxaDev">Blackpink</a>
+							</li>
+							<li><a href="/api/textpro/berry?text=ZexxaDev">Berry</a>
+							</li>
+							<li><a href="/api/textpro/neon?text=ZexxaDev">Neon</a>
+							</li>
+							<li><a href="/api/textpro/logobear?text=ZexxaDev">Logo Bear</a>
+							</li>
+							<li><a href="/api/textpro/3dchristmas?text=ZexxaDev">3D Christmas</a>
+							</li>
+							<li><a href="/api/textpro/thunder?text=ZexxaDev">Thunder</a>
+							</li>
+							<li><a href="/api/textpro/3dboxtext?text=ZexxaDev">3D Box Text</a>
+							</li>
+							<li><a href="/api/textpro/glitch2?text=ZexxaDev&text2=ID">Glitch 2</a>
+							</li>
+							<li><a href="/api/textpro/glitchtiktok?text=ZexxaDev&text2=ID">Glitch Tiktok</a>
+							</li>
+							<li><a href="/api/textpro/video-game-classic?text=ZexxaDev&text2=ID">Video Game</a>
+							</li>
+							<li><a href="/api/textpro/marvel-studios?text=ZexxaDev&text2=ID">Marvel Studios</a>
+							</li>
+						</ul>
+					</li>
+					<li class="dropdown">
+						<a href="javascript:;" class="dropdown-toggle">
+							<span class="micon dw dw-paint-brush"></span><span class="mtext">Photooxy</span>
+						</a>
+						<ul class="submenu">
+							<li><a href="/api/photooxy/flaming?text=ZexxaDev">Flaming</a>
+							</li>
+							<li><a href="/api/photooxy/shadow-sky?text=ZexxaDev">Shadow Sky</a>
+							</li>
+							<li><a href="/api/photooxy/metallic?text=ZexxaDev">Metallic</a>
+							</li>
+							<li><a href="/api/photooxy/naruto?text=ZexxaDev">Naruto</a>
+							</li>
+							<li><a href="/api/photooxy/pubg?text=ZexxaDev&text2=ID">PUBG</a>
+							</li>
+							<li><a href="/api/photooxy/under-grass?text=ZexxaDev">Under Grass</a>
+							</li>
+							<li><a href="/api/photooxy/harry-potter?text=ZexxaDev">Harry Potter</a>
+							</li>
+							<li><a href="/api/photooxy/flower-typography?text=ZexxaDev">Flower Typography</a>
+							</li>
+							<li><a href="/api/photooxy/picture-of-love?text=ZexxaDev">Picture Of Love</a>
+							</li>
+							<li><a href="/api/photooxy/coffee-cup?text=ZexxaDev">Coffe Cup</a>
+							</li>
+							<li><a href="/api/photooxy/butterfly?text=ZexxaDev">Butterfly</a>
+							</li>
+							<li><a href="/api/photooxy/night-sky?text=ZexxaDev">Night Sky</a>
+							</li>
+							<li><a href="/api/photooxy/carved-wood?text=ZexxaDev">Carved Wood</a>
+							</li>
+							<li><a href="/api/photooxy/illuminated-metallic?text=ZexxaDev">Illuminated Metallic</a>
+							</li>
+							<li><a href="/api/photooxy/sweet-candy?text=ZexxaDev">Sweet Candy</a>
+							</li>
+						</ul>
+					</li>
+					<li class="dropdown">
+						<a href="javascript:;" class="dropdown-toggle">
+							<span class="micon dw dw-sound"></span><span class="mtext">Text To Sound</span>
+						</a>
+						<ul class="submenu">
+							<li><a href="/api/soundoftext?text=hello&lang=">Text To Speech</a>
+							</li>
+						</ul>
+					</li>
+					<li class="dropdown">
+						<a href="javascript:;" class="dropdown-toggle">
+							<span class="micon dw dw-search"></span><span class="mtext">Search Feature</span>
+						</a>
+						<ul class="submenu">
+							<li><a href="/api/search/linkgroupwa?text=editor">Group Whatsapp</a>
+							</li>
+							<!--<li><a href="/api/search/xnxxsearch?query=mom">XNXX Video</a>
+							</li>
+							<li><a href="/api/search/xvideossearch?query=mom">XVIDEOS Video</a>
+							</li>-->
+							<li><a href="/api/search/lyrics?query=before you go">Song Lyrics</a>
+							</li>
+							<li><a href="/api/search/wallpaper?query=Anime">Wallpaper</a>
+							</li>
+							<li><a href="/api/search/scsearch?query=without me">Soundcloud</a>
+							</li>
+							<li><a href="/api/search/npmsearch?query=api-dylux">Node Package Manager</a>
+							</li>
+							<!--<li><a href="/api/search/phsearch?query=mom">Pornhub</a>
+							</li>-->
+							<li><a href="/api/search/pinterest?text=Light Yagami">Pinterest</a>
+							</li>
+							<li><a href="/api/search/ringtone?text=Samsung">Ringtone</a>
+							</li>
+							<li><a href="/api/search/wikimedia?text=Banjar">Wikimedia</a>
+							</li>
+							<li><a href="/api/search/wallpaper2?text=anime">Wallpaper 2</a>
+							</li>
+							<li><a href="/api/search/google?text=Light Yagami">Google</a>
+							</li>
+							<li><a href="/api/search/ytplay?text=without me">YT Play</a>
+							</li>
+							<li><a href="/api/search/sticker?text=Dino">Stickerpack</a>
+							</li>
+							<li><a href="/api/search/sfilemobi?text=opok">Sfile Mobi</a>
+							</li>
+						</ul>
+					</li>
+					<li class="dropdown">
+						<a href="javascript:;" class="dropdown-toggle">
+							<span class="micon dw dw-image-1"></span><span class="mtext">Random Images</span>
+						</a>
+						<ul class="submenu">
+							<li><a href="/api/random/dinokuning">Yellow Dino</a>
+							</li>
+							<li><a href="/api/random/patrick">Patrick Star</a>
+							</li>
+							<li><a href="/api/random/amongus">Among Us</a>
+							</li>
+							<li><a href="/api/random/animestick">Anime</a>
+							</li>
+							<li><a href="/api/random/animegif">Anime GIF</a>
+							</li>
+							<li><a href="/api/random/dadu">Dice</a>
+							</li>
+							<li><a href="/api/random/doge">Doge</a>
+							</li>
+							<li><a href="/api/random/kawanspongebob">Spongebob Friends</a>
+							</li>
+							<li><a href="/api/random/manusialidi">Human Thick</a>
+							</li>
+							<li><a href="/api/random/mukalu">Mukalu</a>
+							</li>
+							<li><a href="/api/random/paimon">Paimon</a>
+							
+							</li>
+							<li><a href="/api/random/patrickgif">Patrick GIF</a>
+							</li>
+							<li><a href="/api/random/random">Random</a>
+							</li>
+							<li><a href="/api/random/rabbit">Rabbit</a>
+							</li>
+							<li><a href="/api/random/spongebob">Spongebob</a>
+							</li>
+						</ul>
+					</li>
+					<li class="dropdown">
+						<a href="javascript:;" class="dropdown-toggle">
+							<span class="micon dw dw-copy"></span><span class="mtext">Extra Feature</span>
+						</a>
+						<ul class="submenu">
+							<li><a href="/api/tools/remini?url=">Remini</a></li>
+							<li><a href="/api/tools/toanime?url=">Turn to Anime</a></li>
+							<li><a href="/api/tools/tinyurl?url=">TinyURL</a></li>
+							<li><a href="/api/tools/decode?text=">Decode Base64</a></li>
+							<li><a href="/api/tools/encode?text=">Encode Base64</a></li>
+							<li><a href="/api/tools/gitstalk?user=">Github Stalk</a></li>
+							<li><a href="/api/tools/ssweb?url=">Screenshoot Web</a></li>
+							<li><a href="/api/tools/removebg?url=">Remove Background</a></li>
+							<li><a href="/api/tools/airline">Airlines Weather</a></li>
+							<li><a href="/api/tools/textstyle?text=">Text Style</a></li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="mobile-menu-overlay"></div>
+
+	<div class="main-container">
+		<div class="pd-ltr-20">
+			<div class="card-box pd-20 height-100-p mb-30">
+				<div class="row align-items-center">
+					<div class="col-md-4">
+						<img src="vendors/images/banner-img.png" alt="">
+					</div>
+					<div class="col-md-8">
+						<h4 class="font-20 weight-500 mb-10 text-capitalize">
+							Welcome back <div class="weight-600 font-30 text-blue">To Ryzen API</div>
+						</h4>
+						<p class="font-18 max-width-600">Ryzen API is a free and unpaid restful API service provider, you don't need to register or provide personal data, please use it wisely!.</p>
+					</div>
+				</div>
+			</div>
+			<!--<div class="row">
+				<div class="col-md-2 mb-30">
+					<div class="card-box height-100-p
+					width-100-p widget-style1">
+						<div class="d-flex flex-wrap align-items-center">
+<div class="progress-data">
+								<div id="chart"></div>
+							</div>
+							<div class="widget-data">
+								<div class="h4 mb-0">IP ADDRESS</div>
+								<div class="weight-600 font-14" id="ip">WAIT
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+			</div>
+			<!--<div class="row">
+				<div class="col-xl-8 mb-30">
+					<div class="card-box height-100-p pd-20">
+						<h2 class="h4 mb-20">Activity</h2>
+						<div id="chart5"></div>
+					</div>
+				</div>
+				<div class="col-xl-4 mb-30">
+					<div class="card-box height-100-p pd-20">
+						<h2 class="h4 mb-20">Lead Target</h2>
+						<div id="chart6"></div>
+					</div>
+				</div>
+			</div>-->
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<div class="footer-wrap pd-20 mb-20 card-box">
+				Copyright Reserved © 2023-2024 By <a href="https://github.com/ShirokamiRyzen/" target="_blank">Shirokami Ryzen</a>
+			</div>
+		</div>
+	</div>
+	<!-- js -->
+	<script src="vendors/scripts/core.js"></script>
+    <script src="vendors/scripts/ipanda.js"></script>
+	<script src="vendors/scripts/script.min.js"></script>
+	<script src="vendors/scripts/process.js"></script>
+	<script src="vendors/scripts/layout-settings.js"></script>
+	<script src="src/plugins/datatables/js/jquery.dataTables.min.js"></script>
+	<script src="src/plugins/datatables/js/dataTables.bootstrap4.min.js"></script>
+	<script src="src/plugins/datatables/js/dataTables.responsive.min.js"></script>
+	<script src="src/plugins/datatables/js/responsive.bootstrap4.min.js"></script>
+	<script src="vendors/scripts/dashboard.js"></script>
+	<script src="src/plugins/apexcharts/apexcharts.min.js"></script>
+</body>
+</html>

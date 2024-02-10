@@ -621,16 +621,13 @@ a:focus {
 }
 
 .topbar.navbar-light .navbar-nav .nav-item .nav-link:hover {
-    color: #3753cb;
+    color: #9A77FD;
     transition: all .3s ease-in-out;
-    -webkit-transition: all .3s ease-in-out;
+    -webkit-transition: all .3s ease-in-out
 }
 
 .topbar.navbar-light .navbar-nav .nav-item .nav-link:active {
-    color: #3753cb;
-    border-radius: 10px; /* Adjust the value as needed */
-    transition: all .3s ease-in-out;
-    -webkit-transition: all .3s ease-in-out;
+    color: #9A77FD
 }
 
 .bg-navbar {
@@ -1025,9 +1022,9 @@ a:focus {
     }
     .sidebar.toggled .nav-item .collapse .collapse-inner .collapse-item:hover,
     .sidebar.toggled .nav-item .collapsing .collapse-inner .collapse-item:hover {
-        background-color: #3753cb;
+        background-color: #9A77FD;
         transition: all .3s ease-in-out;
-        -webkit-transition: all .3s ease-in-out;
+        -webkit-transition: all .3s ease-in-out
     }
     .sidebar.toggled .nav-item .collapse .collapse-inner .collapse-item:active,
     .sidebar.toggled .nav-item .collapsing .collapse-inner .collapse-item:active {
@@ -1123,10 +1120,7 @@ a:focus {
 .sidebar-light .nav-item .nav-link:focus,
 .sidebar-light .nav-item .nav-link:hover {
     color: #fff;
-    background-color: #3753cb;
-    border-radius: 10px; /* Adjust the value as needed */
-    transition: all .3s ease-in-out;
-    -webkit-transition: all .3s ease-in-out;
+    background-color: #9A77FD
 }
 
 .sidebar-light .nav-item .nav-link:active i,
